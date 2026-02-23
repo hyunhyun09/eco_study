@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>에스피지(SPG) 방산 전략 리포트: 미사일 쇼티지의 역설</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Noto Sans KR', sans-serif; background-color: #F5F5F4; color: #1C1917; scroll-behavior: smooth; }
+        .card { background: white; border-radius: 1rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); padding: 2rem; border: 1px solid #E7E5E4; }
+        .accent-orange { color: #EA580C; }
+        .bg-accent { background-color: #EA580C; }
+        .nav-link { cursor: pointer; transition: color 0.2s; font-size: 0.875rem; font-weight: 500; color: #57534E; }
+        .nav-link:hover { color: #EA580C; }
+        .chart-container { position: relative; width: 100%; max-width: 600px; margin: auto; height: 300px; }
+        .step-num { width: 36px; height: 36px; background: #0F172A; color: white; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-weight: 700; margin-bottom: 1rem; }
+    </style>
+    <!-- 
+        Application Structure Plan:
+        1. The Paradox Logic: Why "No Missile = More Systems".
+        2. Historical Proof: Poland and Saudi Arabia case studies.
+        3. US-Iran Scenario: Numerical simulation of SPG's P&L during war.
+        4. Partnership Ecosystem: Detailed contract status with LIG Nex1 and Hanwha.
+    -->
+    <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
+</head>
+<body class="antialiased">
+
+    <!-- Navigation -->
+    <nav class="bg-white/90 backdrop-blur-md border-b border-stone-200 sticky top-0 z-50">
+        <div class="max-w-6xl mx-auto px-6 h-16 flex justify-between items-center">
+            <div class="font-bold text-xl tracking-tighter text-stone-900 italic" onclick="window.scrollTo({top: 0, behavior: 'smooth'})" style="cursor: pointer;">SPG <span class="text-orange-600">STRATEGY</span></div>
+            <div class="hidden md:flex space-x-8">
+                <span class="nav-link" onclick="scrollToSection('logic')">전략 논리</span>
+                <span class="nav-link" onclick="scrollToSection('history')">역사적 근거</span>
+                <span class="nav-link" onclick="scrollToSection('scenario')">전쟁 시나리오</span>
+                <span class="nav-link" onclick="scrollToSection('partnership')">계약 현황</span>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content -->
+    <main class="max-w-5xl mx-auto px-6 py-12 space-y-24">
+
+        <!-- Hero -->
+        <header class="text-center space-y-6 pt-10">
+            <h1 class="text-4xl font-bold tracking-tight text-stone-900 md:text-5xl leading-tight">요격 미사일 쇼티지:<br>왜 <span class="text-orange-600">인프라 확충</span>이 먼저인가?</h1>
+            <p class="text-stone-500 max-w-2xl mx-auto text-lg">미사일 재고 고갈은 단순히 탄약 부족을 넘어, 방어 체계 전반의 패러다임 변화와 시스템(발사대/레이더) 대규모 발주를 촉발합니다.</p>
+        </header>
+
+        <!-- Section 1: The Logic -->
+        <section id="logic" class="space-y-12">
+            <div class="flex items-center gap-4">
+                <h2 class="text-2xl font-bold text-stone-900">1. 미사일 부족 = 시스템 확충의 논리</h2>
+                <div class="h-px flex-grow bg-stone-200"></div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 text-center">
+                <div class="card bg-stone-50 border-none">
+                    <div class="step-num mx-auto">01</div>
+                    <h4 class="font-bold mb-3">교전 효율의 극대화</h4>
+                    <p class="text-sm text-stone-500 leading-relaxed">탄약이 귀해질수록 한 발의 미사일이 적중할 확률을 높여야 합니다. 이를 위해 더 많은 <b>다기능 레이더(MFR)</b>를 배치하여 정밀도를 높입니다.</p>
+                </div>
+                <div class="card bg-stone-50 border-none">
+                    <div class="step-num mx-auto">02</div>
+                    <h4 class="font-bold mb-3">동시 교전 능력 확보</h4>
+                    <p class="text-sm text-stone-500 leading-relaxed">미사일 수급이 늦어지면 적의 '물량 공세'에 취약해집니다. 이를 막기 위해 여러 지점에 <b>분산된 발사대</b>를 설치하여 대응 각도를 넓힙니다.</p>
+                </div>
+                <div class="card bg-stone-50 border-none">
+                    <div class="step-num mx-auto">03</div>
+                    <h4 class="font-bold mb-3">시스템 세트 수주 관례</h4>
+                    <p class="text-sm text-stone-500 leading-relaxed">방산 수출은 유도탄 단품이 아니라 <b>레이더+발사대+지휘소</b>가 묶인 '포대(Battery)' 단위입니다. 수요 증가는 곧 이 세트의 증가입니다.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 1-2: Historical Evidence -->
+        <section id="history" class="space-y-12 bg-white rounded-3xl p-10 shadow-sm border border-stone-100">
+            <h2 class="text-2xl font-bold text-stone-900">1-2. 역사적 실증 사례</h2>
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
+                <div class="space-y-6">
+                    <div class="p-6 bg-stone-50 rounded-xl border-l-4 border-orange-600">
+                        <h4 class="font-bold text-stone-800 mb-2">사례 A: 폴란드 천무(K-MLRS) 대량 수주</h4>
+                        <p class="text-sm text-stone-600 leading-relaxed">
+                            우크라이나 전쟁으로 인한 미사일 고갈 상황에서 폴란드는 탄약 확보와 동시에 <b>천무 발사대 288대</b>를 주문했습니다. 탄약 부족이 오히려 '최신형 발사 인프라'를 한꺼번에 교체하는 동력이 된 사례입니다.
+                        </p>
+                    </div>
+                    <div class="p-6 bg-stone-50 rounded-xl border-l-4 border-slate-900">
+                        <h4 class="font-bold text-stone-800 mb-2">사례 B: 사우디 천궁-II 포대 도입</h4>
+                        <p class="text-sm text-stone-600 leading-relaxed">
+                            중동 분쟁으로 요격탄 쇼티지를 겪은 사우디는 시스템의 한계를 극복하기 위해 <b>4조 원 규모의 천궁-II 포대</b>를 도입했습니다. 여기서 계약 금액의 상당 부분은 유도탄이 아닌 <b>지상 통제 장비와 발사대</b>에 할당되었습니다.
+                        </p>
+                    </div>
+                </div>
+                <div class="flex flex-col justify-center items-center p-8 bg-orange-50 rounded-2xl">
+                    <h4 class="font-bold text-orange-900 mb-4 text-center">쇼티지 발생 시 예산 흐름</h4>
+                    <div class="w-full space-y-4">
+                        <div class="flex justify-between text-xs font-bold text-orange-700">
+                            <span>긴급 탄약 보충</span>
+                            <span>즉각 예산</span>
+                        </div>
+                        <div class="w-full bg-orange-200 h-2 rounded-full overflow-hidden">
+                            <div class="bg-orange-600 h-full w-[40%]"></div>
+                        </div>
+                        <div class="flex justify-between text-xs font-bold text-orange-700 mt-4">
+                            <span>발사 시스템 및 인프라 확충</span>
+                            <span>지속적 대규모 예산</span>
+                        </div>
+                        <div class="w-full bg-orange-200 h-2 rounded-full overflow-hidden">
+                            <div class="bg-orange-600 h-full w-[90%]"></div>
+                        </div>
+                    </div>
+                    <p class="text-[10px] text-orange-600 mt-6 text-center italic">"미사일은 소모되지만, 인프라는 국가의 자산으로 남아 지속적인 부품 교체(MRO) 수요를 만듭니다."</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: US-Iran Scenario -->
+        <section id="scenario" class="space-y-12">
+            <div class="flex items-center gap-4">
+                <h2 class="text-2xl font-bold text-stone-900">2. 미국-이란 분쟁 시 시뮬레이션</h2>
+                <div class="h-px flex-grow bg-stone-200"></div>
+            </div>
+
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-10">
+                <div class="card flex flex-col justify-center">
+                    <h3 class="font-bold text-lg mb-6 text-center">부문별 이익 민감도 (2026F 예상)</h3>
+                    <div class="chart-container">
+                        <canvas id="profitChart"></canvas>
+                    </div>
+                </div>
+                <div class="card bg-slate-900 text-white border-none shadow-xl">
+                    <h3 class="text-orange-400 font-bold text-xl mb-6">시나리오 결과: 손해 vs 이득</h3>
+                    <div class="space-y-6">
+                        <div class="flex gap-4">
+                            <div class="text-red-400 font-black text-2xl">▼</div>
+                            <div>
+                                <h4 class="font-bold">가전/산업용 (글로벌 경기 침체)</h4>
+                                <p class="text-sm text-slate-400 mt-1">매출 약 15% 하락 가정 시, 영업이익 약 <b>-18억 원</b> 영향</p>
+                            </div>
+                        </div>
+                        <div class="flex gap-4">
+                            <div class="text-green-400 font-black text-2xl">▲</div>
+                            <div>
+                                <h4 class="font-bold">방산/로봇 (시스템 확충 특수)</h4>
+                                <p class="text-sm text-slate-400 mt-1">매출 약 50% 급증 가정 시, 영업이익 약 <b>+65억 원</b> 기여</p>
+                            </div>
+                        </div>
+                        <div class="mt-8 pt-6 border-t border-slate-700 text-center">
+                            <p class="text-xs text-slate-500 uppercase tracking-widest mb-1">순수익 변화 예측</p>
+                            <div class="text-3xl font-bold text-white">Net Profit <span class="text-green-400">+47억</span></div>
+                            <p class="text-xs text-orange-500 mt-2">"가전의 타격을 방산의 고마진이 상쇄하며 체질 개선 가속화"</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Partnerships -->
+        <section id="partnership" class="space-y-12">
+            <div class="flex items-center gap-4">
+                <h2 class="text-2xl font-bold text-stone-900">3. 에스피지 방산 계약 및 파트너십 현황</h2>
+                <div class="h-px flex-grow bg-stone-200"></div>
+            </div>
+
+            <div class="overflow-x-auto card p-0 overflow-hidden">
+                <table class="w-full text-sm text-left">
+                    <thead class="bg-stone-50 text-stone-500 font-bold uppercase text-[11px] tracking-wider">
+                        <tr>
+                            <th class="p-6">파트너사</th>
+                            <th class="p-6">관련 무기 체계</th>
+                            <th class="p-6">에스피지 공급 내용 (계약 요지)</th>
+                            <th class="p-6">현황</th>
+                        </tr>
+                    </thead>
+                    <tbody class="divide-y divide-stone-100">
+                        <tr>
+                            <td class="p-6 font-bold text-stone-900">LIG넥스원</td>
+                            <td class="p-6">천궁-II (M-SAM)</td>
+                            <td class="p-6">다기능 레이더(MFR) 지향용 초정밀 <b>SH 감속기</b> 국산화 공급</td>
+                            <td class="p-6"><span class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs font-bold">양산 공급 중</span></td>
+                        </tr>
+                        <tr>
+                            <td class="p-6 font-bold text-stone-900">한화에어로스페이스</td>
+                            <td class="p-6">천무 (K-MLRS)</td>
+                            <td class="p-6">발사대 포탑 회전 및 고저 조절용 <b>고강성 SR 감속기</b> 공급</td>
+                            <td class="p-6"><span class="bg-green-100 text-green-700 px-2 py-1 rounded text-xs font-bold">수출 물량 대응 중</span></td>
+                        </tr>
+                        <tr>
+                            <td class="p-6 font-bold text-stone-900">현대위아 / 한화시스템</td>
+                            <td class="p-6">RCWS / 안티드론</td>
+                            <td class="p-6">무인 총탑 및 드론 탐지 레이더용 <b>소형/중형 감속기</b> 세트</td>
+                            <td class="p-6"><span class="bg-blue-100 text-blue-700 px-2 py-1 rounded text-xs font-bold">신규 수주 확대</span></td>
+                        </tr>
+                        <tr>
+                            <td class="p-6 font-bold text-stone-900">레인보우로보틱스</td>
+                            <td class="p-6">국방 사족보행 로봇</td>
+                            <td class="p-6">로봇 다리 관절용 <b>고정밀 감속기</b> 독점적 파트너십</td>
+                            <td class="p-6"><span class="bg-orange-100 text-orange-700 px-2 py-1 rounded text-xs font-bold">시범 배치 및 양산 대기</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <div class="card border-none bg-stone-900 text-white flex items-center gap-6">
+                    <div class="text-4xl text-orange-500 font-black italic leading-none">SWOT</div>
+                    <div class="text-sm space-y-1">
+                        <p class="font-bold">Strength: 일본산 HDS/Nidec 대비 가격 및 납기 우위</p>
+                        <p class="text-stone-500">Weakness: 여전히 높은 가전 매출 비중 (70%)</p>
+                    </div>
+                </div>
+                <div class="card border-none bg-orange-600 text-white flex items-center gap-6">
+                    <div class="text-4xl text-white font-black italic leading-none">CORE</div>
+                    <div class="text-sm space-y-1">
+                        <p class="font-bold">핵심 목표: 2026년 방산/로봇 비중 20% 달성</p>
+                        <p class="text-orange-100">결과: 영업이익 2배 성장을 통한 밸류에이션 리레이팅</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer class="bg-white border-t border-stone-200 py-12 px-6 mt-20">
+        <div class="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-8">
+            <div class="text-stone-400 text-xs">
+                <p class="font-bold text-stone-900 text-sm mb-2 italic">SPG: PRECISION MOVES THE DEFENSE</p>
+                <p>© 2026 에스피지 방산 전략 연구소. 본 자료는 투자 참고용 분석 시나리오입니다.</p>
+            </div>
+            <div class="flex gap-4">
+                <span class="text-[10px] font-bold bg-stone-900 text-stone-100 px-3 py-1 rounded uppercase tracking-tighter">Mil-Spec Ready</span>
+                <span class="text-[10px] font-bold bg-orange-600 text-white px-3 py-1 rounded uppercase tracking-tighter">Partnership: LIG / HW / RW</span>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function scrollToSection(id) {
+            const el = document.getElementById(id);
+            if (el) {
+                const navHeight = 64;
+                const offsetPosition = el.getBoundingClientRect().top + window.pageYOffset - navHeight;
+                window.scrollTo({ top: offsetPosition, behavior: 'smooth' });
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', function() {
+            // Safe Chart Initialization
+            const profitCanvas = document.getElementById('profitChart');
+            
+            if (profitCanvas) {
+                const ctxProfit = profitCanvas.getContext('2d');
+                new Chart(ctxProfit, {
+                    type: 'bar',
+                    data: {
+                        labels: ['가전/산업용 (저마진)', '방산/로봇 (고마진)'],
+                        datasets: [{
+                            label: '영업이익률 (%)',
+                            data: [3.5, 18.0],
+                            backgroundColor: ['#A8A29E', '#EA580C'],
+                            borderRadius: 8,
+                            barPercentage: 0.6
+                        }]
+                    },
+                    options: {
+                        responsive: true,
+                        maintainAspectRatio: false,
+                        plugins: {
+                            legend: { display: false },
+                            tooltip: {
+                                backgroundColor: '#0F172A',
+                                titleFont: { size: 12 },
+                                bodyFont: { size: 14, weight: 'bold' },
+                                padding: 12
+                            }
+                        },
+                        scales: {
+                            y: { 
+                                beginAtZero: true, 
+                                max: 25,
+                                grid: { color: '#f1f5f9' }, 
+                                ticks: { font: { size: 10 } } 
+                            },
+                            x: { grid: { display: false }, ticks: { font: { size: 11, weight: '700' } } }
+                        }
+                    }
+                });
+            }
+
+            // Removed non-existent logicChart initialization to prevent TypeError
+        });
+    </script>
+</body>
+</html>
