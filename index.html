@@ -1,18 +1,20 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="ko">
+
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>SPG (058610) 기업 분석: 가전에서 방산·로봇으로</title>
-    
+
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
-    
+
     <!-- Chart.js -->
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <!-- Google Fonts -->
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
+        rel="stylesheet" />
 
     <!-- Palette & Styles -->
     <!-- Chosen Palette: Industrial Warmth 
@@ -23,7 +25,12 @@
          Accent 3 (Warning/Risk): #B91C1C (Red 700)
     -->
     <style>
-        body { font-family: 'Noto Sans KR', sans-serif; background-color: #F5F5F4; color: #1C1917; }
+        body {
+            font-family: "Noto Sans KR", sans-serif;
+            background-color: #f5f5f4;
+            color: #1c1917;
+        }
+
         .chart-container {
             position: relative;
             width: 100%;
@@ -33,50 +40,66 @@
             height: 300px;
             max-height: 400px;
         }
+
         @media (min-width: 768px) {
-            .chart-container { height: 350px; }
+            .chart-container {
+                height: 350px;
+            }
         }
+
         .card {
             background-color: white;
-            border-radius: 0.75rem; /* rounded-xl */
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            border-radius: 0.75rem;
+            /* rounded-xl */
+            box-shadow:
+                0 4px 6px -1px rgba(0, 0, 0, 0.1),
+                0 2px 4px -1px rgba(0, 0, 0, 0.06);
             padding: 1.5rem;
             transition: transform 0.2s ease-in-out;
         }
+
         .card:hover {
             transform: translateY(-2px);
-            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+            box-shadow:
+                0 10px 15px -3px rgba(0, 0, 0, 0.1),
+                0 4px 6px -2px rgba(0, 0, 0, 0.05);
         }
+
         .nav-link {
             cursor: pointer;
             padding-bottom: 2px;
             border-bottom: 2px solid transparent;
             transition: border-color 0.3s;
         }
-        .nav-link:hover, .nav-link.active {
-            border-color: #EA580C;
-            color: #EA580C;
+
+        .nav-link:hover,
+        .nav-link.active {
+            border-color: #ea580c;
+            color: #ea580c;
         }
+
         /* Slider Styling */
-        input[type=range] {
+        input[type="range"] {
             -webkit-appearance: none;
             width: 100%;
             background: transparent;
         }
-        input[type=range]::-webkit-slider-thumb {
+
+        input[type="range"]::-webkit-slider-thumb {
             -webkit-appearance: none;
             height: 16px;
             width: 16px;
             border-radius: 50%;
-            background: #EA580C;
+            background: #ea580c;
             cursor: pointer;
             margin-top: -6px;
         }
-        input[type=range]::-webkit-slider-runnable-track {
+
+        input[type="range"]::-webkit-slider-runnable-track {
             width: 100%;
             height: 4px;
             cursor: pointer;
-            background: #E5E7EB;
+            background: #e5e7eb;
             border-radius: 2px;
         }
     </style>
@@ -88,7 +111,7 @@
          4. Defense & Robot Catalyst (Grid): Specific "Mil-Spec" applications (Robot Dog, Anti-drone, etc.) to ground the "Defense Theme" in reality.
          5. War Scenario Simulator (Interactive Calc): A tool for users to manipulate variables (Appliance slump vs. Defense boom) to see the net effect on SPG's earnings, addressing the user's specific risk question.
     -->
-    
+
     <!-- Visualization & Content Choices:
          - Financial Chart (Bar/Line): To show the divergence between revenue stagnation and profit growth (margin improvement).
          - Portfolio Donut: To visually demonstrate the 70% vs 10% imbalance.
@@ -96,18 +119,19 @@
          - Defense Cards: Structured HTML grid to showcase specific tech items without images.
          - NO SVG/Mermaid used.
     -->
-    
+
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
 </head>
-<body class="antialiased min-h-screen flex flex-col">
 
+<body class="antialiased min-h-screen flex flex-col">
     <!-- Navigation -->
     <nav class="bg-white sticky top-0 z-50 shadow-sm border-b border-gray-200">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between h-16">
                 <div class="flex items-center">
                     <div class="flex-shrink-0 flex items-center">
-                        <span class="font-bold text-2xl tracking-tight text-slate-900">SPG <span class="text-sm font-normal text-gray-500">(058610)</span></span>
+                        <span class="font-bold text-2xl tracking-tight text-slate-900">SPG
+                            <span class="text-sm font-normal text-gray-500">(058610)</span></span>
                     </div>
                 </div>
                 <div class="hidden sm:flex sm:space-x-8 items-center text-sm font-medium text-gray-500">
@@ -116,6 +140,31 @@
                     <span class="nav-link" onclick="scrollToSection('portfolio')">사업 포트폴리오</span>
                     <span class="nav-link" onclick="scrollToSection('defense')">K-방산 모멘텀</span>
                     <span class="nav-link" onclick="scrollToSection('simulation')">리스크 시뮬레이션</span>
+                    <div class="hidden sm:flex sm:space-x-8 items-center text-sm font-medium text-gray-500">
+                        <span class="nav-link" onclick="scrollToSection('summary')">요약</span>
+                        <span class="nav-link" onclick="scrollToSection('financials')">실적 전망</span>
+
+                        <div class="h-4 w-px bg-gray-300 mx-2"></div>
+
+                        <a href="에스피지_미란_유도미사일.html"
+                            class="flex items-center gap-1 text-orange-600 hover:underline hover:underline-offset-4 decoration-2">
+                            <span>방산 전략 리포트</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                </path>
+                            </svg>
+                        </a>
+                        <a href="에스피지_미란전쟁_이익예상.html"
+                            class="flex items-center gap-1 text-orange-600 hover:underline hover:underline-offset-4 decoration-2">
+                            <span>전쟁 시뮬레이션</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14">
+                                </path>
+                            </svg>
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -123,39 +172,55 @@
 
     <!-- Main Content -->
     <main class="flex-grow max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 space-y-12">
-
         <!-- 1. Executive Summary -->
         <section id="summary" class="space-y-6">
             <div class="text-center space-y-4">
-                <span class="inline-flex items-center rounded-full bg-orange-100 px-3 py-0.5 text-sm font-medium text-orange-800">2026.02.19 기준 분석</span>
-                <h1 class="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">가전에서 <span class="text-orange-600">방산·로봇</span>으로</h1>
+                <span
+                    class="inline-flex items-center rounded-full bg-orange-100 px-3 py-0.5 text-sm font-medium text-orange-800">2026.02.19
+                    기준 분석</span>
+                <h1 class="text-4xl font-bold tracking-tight text-slate-900 sm:text-5xl">
+                    가전에서 <span class="text-orange-600">방산·로봇</span>으로
+                </h1>
                 <p class="text-xl text-gray-600 max-w-3xl mx-auto">
-                    저부가가치 가전용 모터 중심에서 고마진 정밀 감속기로의 체질 개선이 진행 중입니다. 
-                    2026년은 방산과 로봇, 두 개의 신성장 엔진이 실적으로 증명되는 수익성 폭발의 원년이 될 전망입니다.
+                    저부가가치 가전용 모터 중심에서 고마진 정밀 감속기로의 체질 개선이
+                    진행 중입니다. 2026년은 방산과 로봇, 두 개의 신성장 엔진이 실적으로
+                    증명되는 수익성 폭발의 원년이 될 전망입니다.
                 </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mt-8">
                 <div class="card border-l-4 border-orange-500">
-                    <h3 class="text-sm font-medium text-gray-500 uppercase">2025 실적 (잠정)</h3>
+                    <h3 class="text-sm font-medium text-gray-500 uppercase">
+                        2025 실적 (잠정)
+                    </h3>
                     <div class="mt-2 flex items-baseline">
                         <span class="text-2xl font-semibold text-slate-900">영업이익 +30%</span>
                     </div>
-                    <p class="mt-1 text-sm text-gray-600">매출 감소(-10%)에도 불구, 고마진 감속기 비중 확대로 이익 급증.</p>
+                    <p class="mt-1 text-sm text-gray-600">
+                        매출 감소(-10%)에도 불구, 고마진 감속기 비중 확대로 이익 급증.
+                    </p>
                 </div>
                 <div class="card border-l-4 border-blue-500">
-                    <h3 class="text-sm font-medium text-gray-500 uppercase">2026 전망</h3>
+                    <h3 class="text-sm font-medium text-gray-500 uppercase">
+                        2026 전망
+                    </h3>
                     <div class="mt-2 flex items-baseline">
                         <span class="text-2xl font-semibold text-slate-900">OP 285억</span>
                     </div>
-                    <p class="mt-1 text-sm text-gray-600">매출 4,400억 회복 및 영업이익률 6.4% 달성 목표.</p>
+                    <p class="mt-1 text-sm text-gray-600">
+                        매출 4,400억 회복 및 영업이익률 6.4% 달성 목표.
+                    </p>
                 </div>
                 <div class="card border-l-4 border-red-500">
-                    <h3 class="text-sm font-medium text-gray-500 uppercase">핵심 리스크</h3>
+                    <h3 class="text-sm font-medium text-gray-500 uppercase">
+                        핵심 리스크
+                    </h3>
                     <div class="mt-2 flex items-baseline">
                         <span class="text-2xl font-semibold text-slate-900">가전 비중 70%</span>
                     </div>
-                    <p class="mt-1 text-sm text-gray-600">글로벌 경기 침체 시 방산 성장분이 상쇄될 위험 존재.</p>
+                    <p class="mt-1 text-sm text-gray-600">
+                        글로벌 경기 침체 시 방산 성장분이 상쇄될 위험 존재.
+                    </p>
                 </div>
             </div>
         </section>
@@ -163,28 +228,44 @@
         <!-- 2. Financials Section -->
         <section id="financials" class="scroll-mt-24">
             <div class="border-b border-gray-200 pb-4 mb-6">
-                <h2 class="text-2xl font-bold text-slate-900">1. 실적 턴어라운드 분석</h2>
+                <h2 class="text-2xl font-bold text-slate-900">
+                    1. 실적 턴어라운드 분석
+                </h2>
                 <p class="mt-2 text-gray-600">
-                    2025년의 '매출 감소, 이익 증가' 현상은 기업 체질이 바뀌고 있다는 명확한 신호입니다. 
-                    돈이 안 되는 가전 모터를 줄이고, 돈이 되는 로봇/방산 감속기를 늘린 결과입니다.
+                    2025년의 '매출 감소, 이익 증가' 현상은 기업 체질이 바뀌고 있다는
+                    명확한 신호입니다. 돈이 안 되는 가전 모터를 줄이고, 돈이 되는
+                    로봇/방산 감속기를 늘린 결과입니다.
                 </p>
             </div>
-            
+
             <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
                 <div class="lg:col-span-2 bg-white rounded-xl shadow-sm p-4 border border-gray-100">
                     <div class="chart-container">
                         <canvas id="financialChart"></canvas>
                     </div>
-                    <p class="text-center text-xs text-gray-400 mt-2">* 2025년 잠정, 2026년 컨센서스 상단 기준 (단위: 억 원)</p>
+                    <p class="text-center text-xs text-gray-400 mt-2">
+                        * 2025년 잠정, 2026년 컨센서스 상단 기준 (단위: 억 원)
+                    </p>
                 </div>
                 <div class="space-y-4">
                     <div class="bg-blue-50 p-4 rounded-lg">
-                        <h4 class="font-bold text-blue-900 text-sm mb-1">📉 매출의 역설</h4>
-                        <p class="text-sm text-blue-800">2025년 매출 10% 감소는 글로벌 가전 수요 둔화 탓입니다. 하지만 이는 저수익 사업부의 자연스러운 구조조정 효과도 있습니다.</p>
+                        <h4 class="font-bold text-blue-900 text-sm mb-1">
+                            📉 매출의 역설
+                        </h4>
+                        <p class="text-sm text-blue-800">
+                            2025년 매출 10% 감소는 글로벌 가전 수요 둔화 탓입니다. 하지만
+                            이는 저수익 사업부의 자연스러운 구조조정 효과도 있습니다.
+                        </p>
                     </div>
                     <div class="bg-orange-50 p-4 rounded-lg">
-                        <h4 class="font-bold text-orange-900 text-sm mb-1">📈 이익의 질 개선</h4>
-                        <p class="text-sm text-orange-800">영업이익이 30% 급증한 것은 고마진 SH/SR 정밀 감속기 매출 비중이 상승했기 때문입니다. 2026년은 본격적인 양적 성장(Q)이 동반될 전망입니다.</p>
+                        <h4 class="font-bold text-orange-900 text-sm mb-1">
+                            📈 이익의 질 개선
+                        </h4>
+                        <p class="text-sm text-orange-800">
+                            영업이익이 30% 급증한 것은 고마진 SH/SR 정밀 감속기 매출 비중이
+                            상승했기 때문입니다. 2026년은 본격적인 양적 성장(Q)이 동반될
+                            전망입니다.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -193,28 +274,39 @@
         <!-- 3. Portfolio Breakdown -->
         <section id="portfolio" class="scroll-mt-24">
             <div class="border-b border-gray-200 pb-4 mb-6">
-                <h2 class="text-2xl font-bold text-slate-900">2. 사업 포트폴리오의 명과 암</h2>
+                <h2 class="text-2xl font-bold text-slate-900">
+                    2. 사업 포트폴리오의 명과 암
+                </h2>
                 <p class="mt-2 text-gray-600">
-                    에스피지는 여전히 가전 회사의 성격이 강합니다. 방산/로봇의 성장성이 전체 실적을 견인하려면 시간이 필요합니다.
-                    아래 차트의 영역을 클릭하여 부문별 상세 내용을 확인하세요.
+                    에스피지는 여전히 가전 회사의 성격이 강합니다. 방산/로봇의 성장성이
+                    전체 실적을 견인하려면 시간이 필요합니다. 아래 차트의 영역을
+                    클릭하여 부문별 상세 내용을 확인하세요.
                 </p>
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8 items-center">
                 <div class="bg-white rounded-xl shadow-sm p-4 border border-gray-100 flex flex-col items-center">
-                    <h3 class="text-lg font-medium text-gray-900 mb-4">매출 비중 (2025E)</h3>
-                    <div class="chart-container" style="height: 300px;">
+                    <h3 class="text-lg font-medium text-gray-900 mb-4">
+                        매출 비중 (2025E)
+                    </h3>
+                    <div class="chart-container" style="height: 300px">
                         <canvas id="portfolioChart"></canvas>
                     </div>
                 </div>
 
                 <div id="portfolio-detail" class="card bg-gray-50 border border-gray-200">
                     <div class="text-center p-8 text-gray-500">
-                        <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        <svg class="mx-auto h-12 w-12 text-gray-400" fill="none" viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                         </svg>
-                        <h3 class="mt-2 text-sm font-medium text-gray-900">차트 영역을 클릭하세요</h3>
-                        <p class="mt-1 text-sm text-gray-500">각 사업 부문의 리스크와 기회 요인을 분석해 드립니다.</p>
+                        <h3 class="mt-2 text-sm font-medium text-gray-900">
+                            차트 영역을 클릭하세요
+                        </h3>
+                        <p class="mt-1 text-sm text-gray-500">
+                            각 사업 부문의 리스크와 기회 요인을 분석해 드립니다.
+                        </p>
                     </div>
                 </div>
             </div>
@@ -223,10 +315,13 @@
         <!-- 4. Defense Catalyst -->
         <section id="defense" class="scroll-mt-24">
             <div class="border-b border-gray-200 pb-4 mb-6">
-                <h2 class="text-2xl font-bold text-slate-900">3. K-방산 핵심 공급망 진입</h2>
+                <h2 class="text-2xl font-bold text-slate-900">
+                    3. K-방산 핵심 공급망 진입
+                </h2>
                 <p class="mt-2 text-gray-600">
-                    단순 테마가 아닙니다. 이미 <b>Mil-Spec(군용 규격)</b>을 통과하고 실전 배치를 앞둔 구체적인 라인업을 보유하고 있습니다.
-                    2026년부터 본격적인 양산 매출이 가시화될 전망입니다.
+                    단순 테마가 아닙니다. 이미 <b>Mil-Spec(군용 규격)</b>을 통과하고
+                    실전 배치를 앞둔 구체적인 라인업을 보유하고 있습니다. 2026년부터
+                    본격적인 양산 매출이 가시화될 전망입니다.
                 </p>
             </div>
 
@@ -240,11 +335,17 @@
                         <h3 class="font-bold text-lg text-slate-800">사족보행 로봇</h3>
                         <span class="bg-green-100 text-green-800 text-xs px-2 py-1 rounded-full font-medium">납품 중</span>
                     </div>
-                    <p class="text-sm text-gray-600 mb-3">험지 정찰 및 수송용 로봇 개.</p>
+                    <p class="text-sm text-gray-600 mb-3">
+                        험지 정찰 및 수송용 로봇 개.
+                    </p>
                     <div class="border-t border-gray-100 pt-3">
                         <p class="text-xs font-semibold text-slate-500">SPG 역할:</p>
-                        <p class="text-sm font-medium text-orange-600">관절용 SH/SR 감속기 독점 공급</p>
-                        <p class="text-xs text-gray-400 mt-1">고객사: 레인보우로보틱스, 현대로템</p>
+                        <p class="text-sm font-medium text-orange-600">
+                            관절용 SH/SR 감속기 독점 공급
+                        </p>
+                        <p class="text-xs text-gray-400 mt-1">
+                            고객사: 레인보우로보틱스, 현대로템
+                        </p>
                     </div>
                 </div>
 
@@ -257,11 +358,17 @@
                         <h3 class="font-bold text-lg text-slate-800">안티 드론 시스템</h3>
                         <span class="bg-blue-100 text-blue-800 text-xs px-2 py-1 rounded-full font-medium">테스트 완료</span>
                     </div>
-                    <p class="text-sm text-gray-600 mb-3">적 드론 추적 레이더 및 요격 장치.</p>
+                    <p class="text-sm text-gray-600 mb-3">
+                        적 드론 추적 레이더 및 요격 장치.
+                    </p>
                     <div class="border-t border-gray-100 pt-3">
                         <p class="text-xs font-semibold text-slate-500">SPG 역할:</p>
-                        <p class="text-sm font-medium text-orange-600">지향 구동부 초정밀 감속기</p>
-                        <p class="text-xs text-gray-400 mt-1">특징: 1아크민 이내 정밀 제어</p>
+                        <p class="text-sm font-medium text-orange-600">
+                            지향 구동부 초정밀 감속기
+                        </p>
+                        <p class="text-xs text-gray-400 mt-1">
+                            특징: 1아크민 이내 정밀 제어
+                        </p>
                     </div>
                 </div>
 
@@ -272,12 +379,17 @@
                     </div>
                     <div class="flex items-center justify-between mb-4">
                         <h3 class="font-bold text-lg text-slate-800">RCWS (무인총탑)</h3>
-                        <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full font-medium">협력 단계</span>
+                        <span class="bg-yellow-100 text-yellow-800 text-xs px-2 py-1 rounded-full font-medium">협력
+                            단계</span>
                     </div>
-                    <p class="text-sm text-gray-600 mb-3">장갑차/함정용 원격 사격 통제 체계.</p>
+                    <p class="text-sm text-gray-600 mb-3">
+                        장갑차/함정용 원격 사격 통제 체계.
+                    </p>
                     <div class="border-t border-gray-100 pt-3">
                         <p class="text-xs font-semibold text-slate-500">SPG 역할:</p>
-                        <p class="text-sm font-medium text-orange-600">회전/상하 구동 모터 패키지</p>
+                        <p class="text-sm font-medium text-orange-600">
+                            회전/상하 구동 모터 패키지
+                        </p>
                         <p class="text-xs text-gray-400 mt-1">고객사: 현대위아 등</p>
                     </div>
                 </div>
@@ -289,13 +401,20 @@
                     </div>
                     <div class="flex items-center justify-between mb-4">
                         <h3 class="font-bold text-lg text-slate-800">유도 무기</h3>
-                        <span class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full font-medium">개발/양산</span>
+                        <span
+                            class="bg-purple-100 text-purple-800 text-xs px-2 py-1 rounded-full font-medium">개발/양산</span>
                     </div>
-                    <p class="text-sm text-gray-600 mb-3">미사일/자폭 드론 날개 제어.</p>
+                    <p class="text-sm text-gray-600 mb-3">
+                        미사일/자폭 드론 날개 제어.
+                    </p>
                     <div class="border-t border-gray-100 pt-3">
                         <p class="text-xs font-semibold text-slate-500">SPG 역할:</p>
-                        <p class="text-sm font-medium text-orange-600">소형 구동 액추에이터</p>
-                        <p class="text-xs text-gray-400 mt-1">장점: 가격 경쟁력 & 대량 생산</p>
+                        <p class="text-sm font-medium text-orange-600">
+                            소형 구동 액추에이터
+                        </p>
+                        <p class="text-xs text-gray-400 mt-1">
+                            장점: 가격 경쟁력 & 대량 생산
+                        </p>
                     </div>
                 </div>
             </div>
@@ -305,10 +424,14 @@
         <section id="simulation" class="scroll-mt-24">
             <div class="bg-slate-900 text-white rounded-2xl p-8 shadow-xl">
                 <div class="border-b border-slate-700 pb-4 mb-6">
-                    <h2 class="text-2xl font-bold text-white">4. 전쟁/경기침체 시나리오 시뮬레이터</h2>
+                    <h2 class="text-2xl font-bold text-white">
+                        4. 전쟁/경기침체 시나리오 시뮬레이터
+                    </h2>
                     <p class="mt-2 text-slate-400 text-sm">
-                        "전쟁이 나면 방산주라 오르지 않을까요?"라는 질문에 대한 답입니다.<br>
-                        글로벌 경기 침체로 인한 가전 매출 감소폭과 방산 특수 효과를 직접 조정해보세요.
+                        "전쟁이 나면 방산주라 오르지 않을까요?"라는 질문에 대한
+                        답입니다.<br />
+                        글로벌 경기 침체로 인한 가전 매출 감소폭과 방산 특수 효과를 직접
+                        조정해보세요.
                     </p>
                 </div>
 
@@ -320,8 +443,10 @@
                                 <span class="text-gray-300">글로벌 가전/산업 수요 감소 (경기침체)</span>
                                 <span id="appliance-val" class="text-red-400">-0%</span>
                             </label>
-                            <input type="range" id="slider-appliance" min="0" max="50" value="0" step="5">
-                            <p class="text-xs text-gray-500 mt-1">가전/산업용 (매출 비중 90%) 수요가 줄어드는 상황 가정</p>
+                            <input type="range" id="slider-appliance" min="0" max="50" value="0" step="5" />
+                            <p class="text-xs text-gray-500 mt-1">
+                                가전/산업용 (매출 비중 90%) 수요가 줄어드는 상황 가정
+                            </p>
                         </div>
 
                         <div>
@@ -329,25 +454,32 @@
                                 <span class="text-gray-300">방산/로봇 수출 증가 (전쟁 특수)</span>
                                 <span id="defense-val" class="text-green-400">+0%</span>
                             </label>
-                            <input type="range" id="slider-defense" min="0" max="300" value="0" step="10">
-                            <p class="text-xs text-gray-500 mt-1">방산/로봇용 (매출 비중 10%) 수요가 폭증하는 상황 가정</p>
+                            <input type="range" id="slider-defense" min="0" max="300" value="0" step="10" />
+                            <p class="text-xs text-gray-500 mt-1">
+                                방산/로봇용 (매출 비중 10%) 수요가 폭증하는 상황 가정
+                            </p>
                         </div>
 
                         <div class="bg-slate-800 rounded-lg p-4 text-sm text-gray-300 border-l-4 border-yellow-500">
-                            <strong>전문가 Insight:</strong><br>
-                            방산 매출이 2배(+100%)가 되어도, 가전 매출이 15%만 빠지면 전체 실적은 <b>마이너스</b>입니다. 이것이 에스피지 투자의 핵심 리스크입니다.
+                            <strong>전문가 Insight:</strong><br />
+                            방산 매출이 2배(+100%)가 되어도, 가전 매출이 15%만 빠지면 전체
+                            실적은 <b>마이너스</b>입니다. 이것이 에스피지 투자의 핵심
+                            리스크입니다.
                         </div>
                     </div>
 
                     <!-- Result Display -->
-                    <div class="bg-slate-800 rounded-xl p-6 flex flex-col justify-center items-center text-center relative overflow-hidden">
-                        <h3 class="text-gray-400 text-sm uppercase tracking-wider mb-4">예상 2026 매출 변동</h3>
-                        
+                    <div
+                        class="bg-slate-800 rounded-xl p-6 flex flex-col justify-center items-center text-center relative overflow-hidden">
+                        <h3 class="text-gray-400 text-sm uppercase tracking-wider mb-4">
+                            예상 2026 매출 변동
+                        </h3>
+
                         <div class="mb-2">
                             <span class="text-4xl font-bold" id="result-revenue">4,000</span>
                             <span class="text-xl text-gray-500">억 원</span>
                         </div>
-                        
+
                         <div id="result-delta" class="text-lg font-medium text-gray-400 mb-6">
                             변동 없음
                         </div>
@@ -359,7 +491,8 @@
                                 <span id="bar-appliance-text">3,600억</span>
                             </div>
                             <div class="w-full bg-slate-700 rounded-full h-2">
-                                <div id="bar-appliance" class="bg-gray-400 h-2 rounded-full transition-all duration-300" style="width: 90%"></div>
+                                <div id="bar-appliance" class="bg-gray-400 h-2 rounded-full transition-all duration-300"
+                                    style="width: 90%"></div>
                             </div>
 
                             <div class="flex justify-between text-xs text-gray-400 mt-2">
@@ -367,22 +500,53 @@
                                 <span id="bar-defense-text">400억</span>
                             </div>
                             <div class="w-full bg-slate-700 rounded-full h-2">
-                                <div id="bar-defense" class="bg-orange-500 h-2 rounded-full transition-all duration-300" style="width: 10%"></div>
+                                <div id="bar-defense" class="bg-orange-500 h-2 rounded-full transition-all duration-300"
+                                    style="width: 10%"></div>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-
+        <section id="more-reports" class="py-12 border-t border-gray-200">
+            <h2 class="text-2xl font-bold text-slate-900 mb-6">심화 분석 리포트</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <a href="에스피지_미란_유도미사일.html"
+                    class="card hover:border-orange-500 border-2 border-transparent transition-all">
+                    <h3 class="font-bold text-lg text-slate-800">
+                        🚀 미사일 쇼티지의 역설
+                    </h3>
+                    <p class="text-sm text-gray-600 mt-2">
+                        요격 미사일 부족이 왜 시스템 확충으로 이어지는지 분석합니다.
+                    </p>
+                </a>
+                <a href="에스피지_미란전쟁_이익예상.html"
+                    class="card hover:border-orange-500 border-2 border-transparent transition-all">
+                    <h3 class="font-bold text-lg text-slate-800">
+                        📊 전쟁 시나리오 이익 예측
+                    </h3>
+                    <p class="text-sm text-gray-600 mt-2">
+                        미국-이란 분쟁 시 가전 부문 타격과 방산 수혜를 수치로 비교합니다.
+                    </p>
+                </a>
+            </div>
+        </section>
     </main>
 
     <!-- Footer -->
     <footer class="bg-white border-t border-gray-200 mt-12 py-8">
         <div class="max-w-6xl mx-auto px-4 text-center text-gray-500 text-xs">
-            <p class="mb-2">본 자료는 2026년 2월 19일 기준 에스피지(058610) 기업 분석 보고서를 바탕으로 작성되었습니다.</p>
-            <p>투자의 책임은 투자자 본인에게 있으며, 본 자료는 투자 권유가 아닌 정보 제공을 목적으로 합니다.</p>
-            <p class="mt-4">Copyright © 2026 Canvas Create Webapp. All rights reserved.</p>
+            <p class="mb-2">
+                본 자료는 2026년 2월 19일 기준 에스피지(058610) 기업 분석 보고서를
+                바탕으로 작성되었습니다.
+            </p>
+            <p>
+                투자의 책임은 투자자 본인에게 있으며, 본 자료는 투자 권유가 아닌 정보
+                제공을 목적으로 합니다.
+            </p>
+            <p class="mt-4">
+                Copyright © 2026 Canvas Create Webapp. All rights reserved.
+            </p>
         </div>
     </footer>
 
@@ -392,117 +556,123 @@
         function scrollToSection(id) {
             const element = document.getElementById(id);
             if (element) {
-                element.scrollIntoView({ behavior: 'smooth' });
+                element.scrollIntoView({ behavior: "smooth" });
             }
         }
 
         // --- 2. Financial Chart (Chart.js) ---
-        document.addEventListener('DOMContentLoaded', function() {
-            const ctxFin = document.getElementById('financialChart').getContext('2d');
-            
-            // Data 
+        document.addEventListener("DOMContentLoaded", function () {
+            const ctxFin = document
+                .getElementById("financialChart")
+                .getContext("2d");
+
+            // Data
             const revData = [3885, 3500, 4250]; // 24, 25E, 26F (Midpoint)
-            const opData = [123, 160, 277];    // 24, 25E, 26F (Midpoint)
-            
+            const opData = [123, 160, 277]; // 24, 25E, 26F (Midpoint)
+
             new Chart(ctxFin, {
-                type: 'bar',
+                type: "bar",
                 data: {
-                    labels: ['2024 (확정)', '2025 (잠정)', '2026 (전망)'],
+                    labels: ["2024 (확정)", "2025 (잠정)", "2026 (전망)"],
                     datasets: [
                         {
-                            label: '매출액 (억 원)',
+                            label: "매출액 (억 원)",
                             data: revData,
-                            backgroundColor: '#E5E7EB', // Gray-200
-                            yAxisID: 'y',
+                            backgroundColor: "#E5E7EB", // Gray-200
+                            yAxisID: "y",
                             order: 2,
-                            borderRadius: 4
+                            borderRadius: 4,
                         },
                         {
-                            label: '영업이익 (억 원)',
+                            label: "영업이익 (억 원)",
                             data: opData,
-                            borderColor: '#EA580C', // Orange-600
-                            backgroundColor: '#EA580C',
-                            type: 'line',
-                            yAxisID: 'y1',
+                            borderColor: "#EA580C", // Orange-600
+                            backgroundColor: "#EA580C",
+                            type: "line",
+                            yAxisID: "y1",
                             order: 1,
                             tension: 0.1,
                             pointRadius: 6,
-                            pointHoverRadius: 8
-                        }
-                    ]
+                            pointHoverRadius: 8,
+                        },
+                    ],
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
                     interaction: {
-                        mode: 'index',
+                        mode: "index",
                         intersect: false,
                     },
                     plugins: {
-                        legend: { position: 'bottom' },
+                        legend: { position: "bottom" },
                         tooltip: {
-                            backgroundColor: 'rgba(15, 23, 42, 0.9)',
+                            backgroundColor: "rgba(15, 23, 42, 0.9)",
                             padding: 12,
                             titleFont: { size: 14 },
-                            bodyFont: { size: 13 }
-                        }
+                            bodyFont: { size: 13 },
+                        },
                     },
                     scales: {
                         y: {
-                            type: 'linear',
+                            type: "linear",
                             display: true,
-                            position: 'left',
-                            title: { display: true, text: '매출액' },
-                            grid: { display: false }
+                            position: "left",
+                            title: { display: true, text: "매출액" },
+                            grid: { display: false },
                         },
                         y1: {
-                            type: 'linear',
+                            type: "linear",
                             display: true,
-                            position: 'right',
-                            title: { display: true, text: '영업이익' },
-                            grid: { color: '#f3f4f6' }
-                        }
-                    }
-                }
+                            position: "right",
+                            title: { display: true, text: "영업이익" },
+                            grid: { color: "#f3f4f6" },
+                        },
+                    },
+                },
             });
 
             // --- 3. Portfolio Chart (Chart.js) ---
-            const ctxPort = document.getElementById('portfolioChart').getContext('2d');
+            const ctxPort = document
+                .getElementById("portfolioChart")
+                .getContext("2d");
             const portfolioChart = new Chart(ctxPort, {
-                type: 'doughnut',
+                type: "doughnut",
                 data: {
-                    labels: ['가전/OA (경기민감)', '일반 산업용', '로봇/방산 (고성장)'],
-                    datasets: [{
-                        data: [68, 22, 10], // Approx breakdown
-                        backgroundColor: [
-                            '#94A3B8', // Slate 400 (Low Margin)
-                            '#CBD5E1', // Slate 300
-                            '#EA580C'  // Orange 600 (High Margin)
-                        ],
-                        borderWidth: 0,
-                        hoverOffset: 10
-                    }]
+                    labels: ["가전/OA (경기민감)", "일반 산업용", "로봇/방산 (고성장)"],
+                    datasets: [
+                        {
+                            data: [68, 22, 10], // Approx breakdown
+                            backgroundColor: [
+                                "#94A3B8", // Slate 400 (Low Margin)
+                                "#CBD5E1", // Slate 300
+                                "#EA580C", // Orange 600 (High Margin)
+                            ],
+                            borderWidth: 0,
+                            hoverOffset: 10,
+                        },
+                    ],
                 },
                 options: {
                     responsive: true,
                     maintainAspectRatio: false,
                     plugins: {
-                        legend: { position: 'bottom' },
+                        legend: { position: "bottom" },
                         tooltip: {
                             callbacks: {
-                                label: function(context) {
-                                    return context.label + ': ' + context.raw + '%';
-                                }
-                            }
-                        }
+                                label: function (context) {
+                                    return context.label + ": " + context.raw + "%";
+                                },
+                            },
+                        },
                     },
                     onClick: (event, elements) => {
                         if (elements.length > 0) {
                             const index = elements[0].index;
                             updatePortfolioDetail(index);
                         }
-                    }
-                }
+                    },
+                },
             });
         });
 
@@ -512,26 +682,26 @@
                 title: "가전 및 OA 부문 (약 68%)",
                 risk: "⚠️ <b>최대 리스크 요인:</b> 삼성, LG, 월풀 등 글로벌 가전 수요에 실적이 100% 연동됩니다. 경기 침체 시 가장 먼저 타격을 입습니다.",
                 opportunity: "안정적인 Cash Cow 역할을 하지만, 성장성은 낮습니다.",
-                color: "border-gray-400"
+                color: "border-gray-400",
             },
             {
                 title: "일반 산업 자동화 (약 22%)",
                 risk: "공장 설비 투자 위축 시 수주가 감소합니다.",
                 opportunity: "스마트 팩토리 확산에 따른 점진적 수요 증가.",
-                color: "border-gray-300"
+                color: "border-gray-300",
             },
             {
                 title: "로봇/방산 정밀 감속기 (약 10%)",
                 risk: "📈 <b>핵심 성장 동력:</b> 아직 전체 매출에서 차지하는 비중은 작지만, 마진율이 월등히 높습니다. 전쟁 리스크가 커질수록 수요가 폭증하는 유일한 부문입니다.",
                 opportunity: "2026년 목표 매출 500억 원. 영업이익 기여도 급상승 중.",
-                color: "border-orange-500"
-            }
+                color: "border-orange-500",
+            },
         ];
 
         function updatePortfolioDetail(index) {
-            const detailBox = document.getElementById('portfolio-detail');
+            const detailBox = document.getElementById("portfolio-detail");
             const data = portfolioData[index];
-            
+
             detailBox.innerHTML = `
                 <div class="p-6 border-l-4 ${data.color} h-full flex flex-col justify-center animate-fade-in">
                     <h3 class="text-xl font-bold text-slate-800 mb-2">${data.title}</h3>
@@ -544,12 +714,12 @@
         }
 
         // --- 5. Simulation Logic ---
-        const sliderAppliance = document.getElementById('slider-appliance');
-        const sliderDefense = document.getElementById('slider-defense');
-        
+        const sliderAppliance = document.getElementById("slider-appliance");
+        const sliderDefense = document.getElementById("slider-defense");
+
         // Base Assumptions (Approx 2026 Baseline without shocks)
         const BASE_REV_APPLIANCE = 3600; // Appliance + Industry combined
-        const BASE_REV_DEFENSE = 400;    // Robot + Defense
+        const BASE_REV_DEFENSE = 400; // Robot + Defense
         const BASE_TOTAL = 4000;
 
         function updateSimulation() {
@@ -557,8 +727,9 @@
             const defRisePct = parseInt(sliderDefense.value);
 
             // Update Labels
-            document.getElementById('appliance-val').textContent = `-${appDropPct}%`;
-            document.getElementById('defense-val').textContent = `+${defRisePct}%`;
+            document.getElementById("appliance-val").textContent =
+                `-${appDropPct}%`;
+            document.getElementById("defense-val").textContent = `+${defRisePct}%`;
 
             // Calculate New Revenues
             const newAppRev = BASE_REV_APPLIANCE * (1 - appDropPct / 100);
@@ -567,11 +738,11 @@
             const delta = newTotal - BASE_TOTAL;
 
             // Update Total Display
-            const resultEl = document.getElementById('result-revenue');
+            const resultEl = document.getElementById("result-revenue");
             resultEl.innerText = Math.round(newTotal).toLocaleString();
 
             // Update Delta Display
-            const deltaEl = document.getElementById('result-delta');
+            const deltaEl = document.getElementById("result-delta");
             if (delta > 0) {
                 deltaEl.innerHTML = `<span class="text-green-400">▲ ${Math.round(delta).toLocaleString()}억 원 증가</span>`;
             } else if (delta < 0) {
@@ -582,21 +753,25 @@
 
             // Update Bars
             // Max potential range for visuals: ~6000 for width calc
-            const maxScale = 5000; 
-            
-            document.getElementById('bar-appliance').style.width = `${(newAppRev / maxScale) * 100}%`;
-            document.getElementById('bar-appliance-text').textContent = `${Math.round(newAppRev).toLocaleString()}억`;
-            
-            document.getElementById('bar-defense').style.width = `${(newDefRev / maxScale) * 100}%`;
-            document.getElementById('bar-defense-text').textContent = `${Math.round(newDefRev).toLocaleString()}억`;
+            const maxScale = 5000;
+
+            document.getElementById("bar-appliance").style.width =
+                `${(newAppRev / maxScale) * 100}%`;
+            document.getElementById("bar-appliance-text").textContent =
+                `${Math.round(newAppRev).toLocaleString()}억`;
+
+            document.getElementById("bar-defense").style.width =
+                `${(newDefRev / maxScale) * 100}%`;
+            document.getElementById("bar-defense-text").textContent =
+                `${Math.round(newDefRev).toLocaleString()}억`;
         }
 
-        sliderAppliance.addEventListener('input', updateSimulation);
-        sliderDefense.addEventListener('input', updateSimulation);
+        sliderAppliance.addEventListener("input", updateSimulation);
+        sliderDefense.addEventListener("input", updateSimulation);
 
         // Init simulation on load
         updateSimulation();
-
     </script>
 </body>
+
 </html>

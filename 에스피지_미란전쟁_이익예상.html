@@ -1,20 +1,53 @@
 <!DOCTYPE html>
 <html lang="ko">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>에스피지(SPG) 방산·로봇 체질 개선 보고서</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap"
+        rel="stylesheet">
     <style>
-        body { font-family: 'Noto Sans KR', sans-serif; background-color: #F5F5F4; color: #1C1917; }
-        .chart-container { position: relative; width: 100%; max-width: 700px; margin: auto; height: 350px; }
-        .card { background: white; border-radius: 1rem; box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05); padding: 2rem; border: 1px solid #E7E5E4; }
-        .accent-orange { color: #EA580C; }
-        .bg-accent { background-color: #EA580C; }
-        .nav-link { cursor: pointer; transition: color 0.2s; }
-        .nav-link:hover { color: #EA580C; }
+        body {
+            font-family: 'Noto Sans KR', sans-serif;
+            background-color: #F5F5F4;
+            color: #1C1917;
+        }
+
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 700px;
+            margin: auto;
+            height: 350px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+            padding: 2rem;
+            border: 1px solid #E7E5E4;
+        }
+
+        .accent-orange {
+            color: #EA580C;
+        }
+
+        .bg-accent {
+            background-color: #EA580C;
+        }
+
+        .nav-link {
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .nav-link:hover {
+            color: #EA580C;
+        }
     </style>
     <!-- 
         Chosen Palette: Industrial Warmth (Stone 100/200, Slate 900, Orange 600)
@@ -27,17 +60,38 @@
     -->
     <!-- CONFIRMATION: NO SVG graphics used. NO Mermaid JS used. -->
 </head>
+
 <body class="antialiased">
 
     <!-- Navigation -->
     <nav class="bg-white border-b border-stone-200 sticky top-0 z-50">
         <div class="max-w-6xl mx-auto px-6 h-16 flex justify-between items-center">
-            <div class="font-bold text-xl tracking-tighter text-stone-900 italic">SPG <span class="text-orange-600">INTEL</span></div>
+            <div class="font-bold text-xl tracking-tighter text-stone-900 italic">SPG <span
+                    class="text-orange-600">INTEL</span></div>
             <div class="hidden md:flex space-x-8 text-sm font-medium text-stone-500 uppercase tracking-widest">
                 <span class="nav-link" onclick="scrollToSection('revenue')">매출 분석</span>
                 <span class="nav-link" onclick="scrollToSection('simulation')">전쟁 시나리오</span>
                 <span class="nav-link" onclick="scrollToSection('defense')">방산 현황</span>
                 <span class="nav-link" onclick="scrollToSection('competitor')">경쟁사/리스크</span>
+                <div
+                    class="hidden md:flex space-x-8 items-center text-sm font-medium text-stone-500 uppercase tracking-widest">
+                    <span class="nav-link" onclick="scrollToSection('revenue')">매출 분석</span>
+
+                    <div class="h-4 w-px bg-stone-200"></div>
+
+                    <a href="index.html"
+                        class="flex items-center gap-1 text-stone-500 hover:text-orange-600 lowercase tracking-normal">
+                        <span>🏠 기업 분석 메인</span>
+                    </a>
+                    <a href="에스피지_미란_유도미사일.html"
+                        class="flex items-center gap-1 text-orange-600 hover:underline lowercase tracking-normal">
+                        <span>🚀 방산 전략 리포트</span>
+                        <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"></path>
+                        </svg>
+                    </a>
+                </div>
             </div>
         </div>
     </nav>
@@ -47,8 +101,10 @@
 
         <!-- Header -->
         <header class="text-center space-y-4">
-            <h1 class="text-4xl font-bold tracking-tight text-stone-900 md:text-5xl leading-tight">가전에서 <span class="text-orange-600">방산·로봇</span>으로<br>2026 체질 개선 보고서</h1>
-            <p class="text-stone-500 max-w-2xl mx-auto font-medium">저마진 가전용 모터의 타격을 고마진 정밀 감속기로 상쇄하며 수익성 폭발을 노리는 에스피지(SPG)의 전략적 분석입니다.</p>
+            <h1 class="text-4xl font-bold tracking-tight text-stone-900 md:text-5xl leading-tight">가전에서 <span
+                    class="text-orange-600">방산·로봇</span>으로<br>2026 체질 개선 보고서</h1>
+            <p class="text-stone-500 max-w-2xl mx-auto font-medium">저마진 가전용 모터의 타격을 고마진 정밀 감속기로 상쇄하며 수익성 폭발을 노리는
+                에스피지(SPG)의 전략적 분석입니다.</p>
         </header>
 
         <!-- 1. Revenue Analysis -->
@@ -57,7 +113,7 @@
                 <h2 class="text-2xl font-bold text-stone-900">1. 매출 구조 분석</h2>
                 <div class="h-px flex-grow bg-stone-200"></div>
             </div>
-            
+
             <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div class="card space-y-6">
                     <h3 class="text-lg font-bold">부문별 매출 비중 (2025E)</h3>
@@ -110,7 +166,7 @@
 
             <div class="card bg-slate-900 text-white border-none shadow-2xl">
                 <h3 class="text-xl font-bold mb-6 text-orange-400">글로벌 분쟁 시 실적 변동 시뮬레이션 (2026F)</h3>
-                
+
                 <div class="grid grid-cols-1 lg:grid-cols-2 gap-12">
                     <div class="space-y-6">
                         <div class="bg-slate-800 p-5 rounded-xl border border-slate-700">
@@ -135,7 +191,7 @@
                             <div class="text-3xl font-bold text-white mb-2">이익 방어 및 성장 가능</div>
                             <p class="text-sm text-orange-400">"매출은 줄어도 남는 돈은 비슷하거나 많아짐"</p>
                         </div>
-                        
+
                         <div class="overflow-hidden rounded-lg border border-slate-700 text-xs">
                             <table class="w-full">
                                 <thead class="bg-slate-800">
@@ -159,7 +215,8 @@
                                 </tbody>
                             </table>
                         </div>
-                        <p class="text-[10px] text-slate-500 italic text-center">결론: 가전의 큰 타격을 방산의 고마진이 상쇄하며 실적 체력 증명</p>
+                        <p class="text-[10px] text-slate-500 italic text-center">결론: 가전의 큰 타격을 방산의 고마진이 상쇄하며 실적 체력 증명
+                        </p>
                     </div>
                 </div>
             </div>
@@ -220,7 +277,8 @@
                             </div>
                             <span class="text-xs bg-stone-200 px-2 py-1 rounded text-stone-600 font-bold">종합 모터</span>
                         </div>
-                        <div class="flex justify-between items-center p-3 bg-orange-50 rounded-lg border border-orange-100">
+                        <div
+                            class="flex justify-between items-center p-3 bg-orange-50 rounded-lg border border-orange-100">
                             <div>
                                 <p class="font-bold text-sm text-orange-900">에스피지 (대한민국)</p>
                                 <p class="text-xs text-orange-700">가격 경쟁력, 커스터마이징, 빠른 납기</p>
@@ -245,25 +303,43 @@
                             <span class="text-orange-600 font-black">!</span>
                             <div>
                                 <h4 class="font-bold text-sm">높은 가전 매출 의존도</h4>
-                                <p class="text-xs text-stone-500 mt-1 leading-relaxed">방산 매출이 성장 중이나 여전히 70%가 가전임. 글로벌 경기 침체 시 전체 외형이 축소될 위험은 여전함.</p>
+                                <p class="text-xs text-stone-500 mt-1 leading-relaxed">방산 매출이 성장 중이나 여전히 70%가 가전임. 글로벌
+                                    경기 침체 시 전체 외형이 축소될 위험은 여전함.</p>
                             </div>
                         </div>
                         <div class="flex gap-4">
                             <span class="text-orange-600 font-black">!</span>
                             <div>
                                 <h4 class="font-bold text-sm">연구개발비(R&D) 부담</h4>
-                                <p class="text-xs text-stone-500 mt-1 leading-relaxed">Mil-Spec(군용 규격) 인증 및 신규 라인업 확대로 인한 비용 지출이 2026년까지 지속되어 단기 마진을 누를 수 있음.</p>
+                                <p class="text-xs text-stone-500 mt-1 leading-relaxed">Mil-Spec(군용 규격) 인증 및 신규 라인업 확대로
+                                    인한 비용 지출이 2026년까지 지속되어 단기 마진을 누를 수 있음.</p>
                             </div>
                         </div>
                         <div class="flex gap-4">
                             <span class="text-orange-600 font-black">!</span>
                             <div>
                                 <h4 class="font-bold text-sm">환율 및 원자재 변동</h4>
-                                <p class="text-xs text-stone-500 mt-1 leading-relaxed">수출 비중이 높아 환율 급변 시 환차손 리스크 및 희토류 등 원자재 수급 불안 리스크 존재.</p>
+                                <p class="text-xs text-stone-500 mt-1 leading-relaxed">수출 비중이 높아 환율 급변 시 환차손 리스크 및 희토류 등
+                                    원자재 수급 불안 리스크 존재.</p>
                             </div>
                         </div>
                     </div>
                 </div>
+            </div>
+        </section>
+        <section id="more-reports" class="py-12 border-t border-gray-200 mt-12">
+            <h2 class="text-2xl font-bold text-slate-900 mb-6">심화 분석 더보기</h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <a href="index.html"
+                    class="card hover:border-orange-500 border-2 border-transparent transition-all bg-white p-6 rounded-xl shadow-sm">
+                    <h3 class="font-bold text-lg text-slate-800">🏠 에스피지 기업 분석 메인</h3>
+                    <p class="text-sm text-gray-600 mt-2">기본적인 펀더멘탈 분석과 핵심 감속기 제품군의 시장 경쟁력을 확인하세요.</p>
+                </a>
+                <a href="에스피지_미란_유도미사일.html"
+                    class="card hover:border-orange-500 border-2 border-transparent transition-all bg-white p-6 rounded-xl shadow-sm">
+                    <h3 class="font-bold text-lg text-slate-800">🚀 미사일 쇼티지의 역설</h3>
+                    <p class="text-sm text-gray-600 mt-2">중동 및 유럽 분쟁으로 인한 유도미사일 수요 폭증이 에스피지에 미치는 전략적 가치를 분석합니다.</p>
+                </a>
             </div>
         </section>
 
@@ -277,8 +353,10 @@
                 <p>© 2026 에스피지 방산 전략 연구소. 본 자료는 투자 참고용 시나리오 분석입니다.</p>
             </div>
             <div class="flex gap-4">
-                <span class="text-[10px] font-bold bg-stone-900 text-stone-100 px-3 py-1 rounded uppercase">Mil-Spec Ready</span>
-                <span class="text-[10px] font-bold bg-orange-600 text-white px-3 py-1 rounded uppercase">Top Localizer</span>
+                <span class="text-[10px] font-bold bg-stone-900 text-stone-100 px-3 py-1 rounded uppercase">Mil-Spec
+                    Ready</span>
+                <span class="text-[10px] font-bold bg-orange-600 text-white px-3 py-1 rounded uppercase">Top
+                    Localizer</span>
             </div>
         </div>
     </footer>
@@ -289,7 +367,7 @@
             if (el) window.scrollTo({ top: el.offsetTop - 80, behavior: 'smooth' });
         }
 
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
             // Revenue Pie Chart
             const ctxRev = document.getElementById('revenueChart').getContext('2d');
             new Chart(ctxRev, {
@@ -315,4 +393,5 @@
         });
     </script>
 </body>
+
 </html>
